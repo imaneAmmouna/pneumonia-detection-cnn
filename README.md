@@ -3,7 +3,7 @@
 ## 1. Qu’est-ce que la pneumonie ?
 La **pneumonie** est une infection des poumons qui peut être causée par des bactéries, des virus ou des champignons.  
 Elle entraîne une **inflammation des alvéoles pulmonaires**, souvent remplies de liquide ou de pus, ce qui rend la respiration difficile.  
-![Description de l'image](images/pneumonia_example.jpg)
+![Exemple de pneumonie](images/pneumonia_example.JPG)
 
 ---
 
