@@ -87,7 +87,7 @@ Bloc final : Classification
       │
       ▼
 Sortie : Probabilité binaire (Normal / Pneumonia)
-
+![Architecture du CNN](images/architecture.JPG)
 
 ---
 
