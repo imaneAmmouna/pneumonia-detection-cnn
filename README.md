@@ -43,50 +43,33 @@ Le modèle construit comprend :
 - Loss : `binary_crossentropy`  
 - Metrics : `accuracy`
 
-Entrée (150x150x1)
-      │
-      ▼
-Bloc 1 : Extraction initiale de caractéristiques
-  - Conv2D : 32 filtres, 3x3, ReLU, padding='same'
-  - BatchNormalization
-  - MaxPooling2D : 2x2, padding='same'
-      │
-      ▼
-Bloc 2 : Extraction intermédiaire et régularisation
-  - Conv2D : 64 filtres, 3x3, ReLU, padding='same'
-  - Dropout : 0.1
-  - BatchNormalization
-  - MaxPooling2D : 2x2, padding='same'
-      │
-      ▼
-Bloc 3 : Extraction approfondie
-  - Conv2D : 64 filtres, 3x3, ReLU, padding='same'
-  - BatchNormalization
-  - MaxPooling2D : 2x2, padding='same'
-      │
-      ▼
-Bloc 4 : Extraction avancée
-  - Conv2D : 128 filtres, 3x3, ReLU, padding='same'
-  - Dropout : 0.2
-  - BatchNormalization
-  - MaxPooling2D : 2x2, padding='same'
-      │
-      ▼
-Bloc 5 : Extraction finale
-  - Conv2D : 256 filtres, 3x3, ReLU, padding='same'
-  - Dropout : 0.2
-  - BatchNormalization
-  - MaxPooling2D : 2x2, padding='same'
-      │
-      ▼
-Bloc final : Classification
-  - Flatten
-  - Dense : 128 neurones, ReLU
-  - Dropout : 0.2
-  - Dense : 1 neurone, Sigmoid
-      │
-      ▼
-Sortie : Probabilité binaire (Normal / Pneumonia)
+| Bloc | Couche / Opération | Détails |
+|------|------------------|---------|
+| Entrée | Input | 150 x 150 x 1 |
+| Bloc 1 | Conv2D | 32 filtres, 3x3, ReLU, padding='same' |
+|        | BatchNormalization | - |
+|        | MaxPooling2D | 2x2, padding='same' |
+| Bloc 2 | Conv2D | 64 filtres, 3x3, ReLU, padding='same' |
+|        | Dropout | 0.1 |
+|        | BatchNormalization | - |
+|        | MaxPooling2D | 2x2, padding='same' |
+| Bloc 3 | Conv2D | 64 filtres, 3x3, ReLU, padding='same' |
+|        | BatchNormalization | - |
+|        | MaxPooling2D | 2x2, padding='same' |
+| Bloc 4 | Conv2D | 128 filtres, 3x3, ReLU, padding='same' |
+|        | Dropout | 0.2 |
+|        | BatchNormalization | - |
+|        | MaxPooling2D | 2x2, padding='same' |
+| Bloc 5 | Conv2D | 256 filtres, 3x3, ReLU, padding='same' |
+|        | Dropout | 0.2 |
+|        | BatchNormalization | - |
+|        | MaxPooling2D | 2x2, padding='same' |
+| Bloc final | Flatten | - |
+|            | Dense | 128 neurones, ReLU |
+|            | Dropout | 0.2 |
+|            | Dense | 1 neurone, Sigmoid |
+| Sortie | - | Probabilité binaire (Normal / Pneumonia) |
+
 ![Architecture du CNN](images/architecture.JPG)
 
 ---
