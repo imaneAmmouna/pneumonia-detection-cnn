@@ -25,7 +25,7 @@ Le dataset utilisé est celui de Kaggle : [Chest X-Ray Images (Pneumonia)](https
   - Zoom  
   - Flip horizontal  
 
-- Les images sont organisées en **train / validation / test** avec `ImageDataGenerator` de Keras pour gérer l’entrée du CNN.
+- Les images sont organisées en **train / validation / test**.
 
 ---
 
@@ -91,11 +91,26 @@ Le modèle construit comprend :
 
 ---
 
-## 7. Résultats visuels
-- Le notebook affiche :  
-  1. **Exemples d’images correctement classées**  
-  2. **Exemples d’images mal classées**  
-  3. **Courbes d’accuracy et de loss**  
-  4. **Confusion matrix**  
+## 7. Limites et problèmes rencontrés
 
-Cela permet d’analyser concrètement les forces et limites du modèle.
+**1. Déséquilibre du dataset**  
+- Le dataset original était fortement déséquilibré : beaucoup plus d’images pour la classe **PNEUMONIA** que pour **NORMAL**.  
+- Un déséquilibre peut biaiser le modèle vers la classe majoritaire, entraînant des faux négatifs pour la classe minoritaire.  
+- Solution appliquée :  
+  - Rassemblement de toutes les images et **équilibrage des deux classes** en prenant le même nombre d’images pour NORMAL et PNEUMONIA.  
+  - Split **70/15/15** pour train, validation et test, en conservant l’équilibre dans chaque sous-ensemble.  
+
+**2. Taille du dataset**  
+- Même après l’équilibrage, le dataset reste **relativement petit**, ce qui limite la capacité du modèle à généraliser à de nouvelles images.  
+- Une augmentation des données (data augmentation) a été utilisée pour améliorer la robustesse.
+
+**3. Surapprentissage (overfitting)**  
+- Les courbes d’accuracy et de loss montrent que le modèle peut facilement mémoriser les images d’entraînement.  
+- Solutions appliquées : **Dropout**, **BatchNormalization**, et **early stopping**.
+
+**4. Variabilité des images**  
+- Les radiographies proviennent de différentes sources, avec des résolutions et des qualités différentes.  
+- Cela peut influencer les performances et nécessite éventuellement une **normalisation ou prétraitement plus avancé**.
+
+**5. Limitation de l’évaluation**  
+- Les métriques (accuracy, AUC, f1-score) sont bonnes, mais une **validation croisée ou un dataset externe** pourrait mieux évaluer la généralisation du modèle.
